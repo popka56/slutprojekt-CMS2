@@ -99,16 +99,17 @@ function init_ehk_payment_option() {
          }
 
       }
-   }
 
-   //Här skulle kod som faktiskt genomförde beställningen var (men det ingår inte i uppgiften så vi skippar det)
-   public function process_payment( $order_id ) {
- 
-      global $woocommerce;
-      $order = wc_get_order( $order_id );
-    
-      //Prata med en API eller något för att skicka iväg en avi till rätt person med vårt personrn etc...
-    
+      //Här skulle kod som faktiskt genomförde beställningen var (men det ingår inte i uppgiften så vi skippar det)
+      public function process_payment( $order_id ) {
+   
+         global $woocommerce;
+         $order = wc_get_order( $order_id );
+      
+         //Prata med en API eller något för att skicka iväg en avi till rätt person med vårt personrn etc...
+      
+      }
+
    }
 
    //En klass för att validera personnr med luhn-algoritmen
