@@ -2,9 +2,83 @@
 /*
 Plugin Name: Slutprojekt - Test Plugin
 Plugin URI: 
-description:
+description: Testar olika funktioner från betalning- och leveransplugin skapade av EHK.
 Version: 1.0
 Author: Elin, Hugo & Kristoffer
 Author URI: 
 License: GPL2
 */
+
+//Undviker tillgång till filen direkt från en URL
+if(!defined('ABSPATH')){
+    die;
+ }
+ 
+ //Vi använder en klass med statiska funktioner som vi kan kalla från en testsida i wp-admin
+ class EHKTestPlugin
+ {
+    function __construct() {
+       add_action('admin_menu', array($this, 'add_plugin_page'));
+    }
+ 
+    //Om något ska hända vid start
+    function on_plugin_activate() {
+
+    }
+
+    //Om något ska ske vid avinstallation
+    function on_plugin_uninstall(){
+    
+    }
+ 
+    //Lägg till ny sida i wp-admin
+    public function add_plugin_page(){
+        add_menu_page( 'EHK Test Plugin', 
+                       'Test Plugin', 
+                       'manage_options', 
+                       'ehk_test_plugin', 
+                       array($this, 'ehk_testing_page'), //funktionen som hämtar templaten
+                       'dashicons-admin-generic', 
+                       25 );
+     }
+
+    //Hämta template för testssidan
+    function ehk_testing_page(){
+       require_once plugin_dir_path( __FILE__ ) . 'testing.php';
+    }
+ 
+    //Funktion för att testa validateString funktionen från betalningspluginet
+    public static function is_actually_valid_ssn(string $ssn, bool $expectedOutput){
+ 
+       $output = Personnummer::validateString($ssn);
+ 
+       if($expectedOutput){
+          $expectedOutputS = 'true';
+       }
+       else{
+          $expectedOutputS = 'false';
+       }
+ 
+       if($output){
+          $outputS = 'true';
+       }
+       else{
+          $outputS = 'false';
+       }
+       
+       if($output === $expectedOutput){
+          echo '<p><span style="color: green;">Testet lyckades!</span> Personnummret "' . $ssn . '" förväntades returnera <span style="color: blue;">' . $expectedOutputS . '</span> och returnerade <span style="color: blue;">' . $outputS . '</span>.</p>';
+       }
+       else{
+          echo '<p><span style="color: red;">Testet misslyckades!</span> Personnummret "' . $ssn . '" förväntades returnera <span style="color: blue;">' . $expectedOutputS . '</span> men returnerade <span style="color: blue;">' . $outputS . '</span>.</p>';
+       }
+    }
+
+    //Lägg till era statiska testfunktioner här
+    //...
+ }
+ 
+ //Registrering-hooks
+ $ehkTestPlugin = new EHKTestPlugin();
+ register_activation_hook(__FILE__, array($ehkTestPlugin, 'on_plugin_activate'));
+ register_activation_hook(__FILE__, array($ehkTestPlugin, 'on_plugin_uninstall'));

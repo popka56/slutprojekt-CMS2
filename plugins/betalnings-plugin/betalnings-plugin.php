@@ -113,8 +113,6 @@ function init_ehk_payment_option() {
    }
 
    //En klass för att validera personnr med luhn-algoritmen
-   //Exempel på en som ska lyckas: 640823-3234
-   //Exempel på en som ska misslyckas: 640823-3233
    class Personnummer
    {
       private
