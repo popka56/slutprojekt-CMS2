@@ -4,3 +4,486 @@ Author: Elin, Hugo & Kristoffer
 Description: ???
 Version: 1.0
 */
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main-menu, 
+.main-menu-mobile, 
+.slide, 
+.section-campaign-content,
+.separator,
+footer,
+#dropdown-menu {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+/*
+font-family: 'Catamaran', sans-serif;
+font-family: 'Raleway', sans-serif;
+font-family: 'Roboto', sans-serif;
+*/
+
+/* Main menu */
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main-menu {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-top: 30px;
+  padding-bottom: 20px;
+  border-bottom: 0.5px solid #000;
+}
+
+.main-menu-icons-container {
+  position: absolute;
+  top: 3%;
+  right: 5%;
+}
+
+.main-menu-icons-container img {
+  width: 31px;
+  padding: 10px;
+}
+
+nav ul, footer ul, #dropdown-menu ul {
+  list-style-type: none;
+  margin-top: 15px;
+}
+
+nav li {
+  display: inline-block;
+  margin: 15px;
+}
+nav a, .customer-service-container a, #dropdown-menu a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Dropdowmn menu */
+#dropdown-menu {
+  display: none;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  background-color: rgba(196, 196, 196, 0.95);
+  top: 150px;
+}
+
+#dropdown-menu li {
+  margin: 30px;
+}
+
+/* Mobile menu */
+.main-menu-mobile {
+  display: none;
+}
+
+/* Hero */
+/* .slide {
+  height: 465px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 40px 0;
+  background-image: url('/assets/img/noah-buscher.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+} */
+
+.hero-campaign {
+  width: 20%;
+  text-align: center;
+}
+
+.button {
+  width: 156px;
+  height: 48px;
+  background-color: #000;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  margin: 20px;
+}
+
+.hero-discount {
+  display: flex;
+  align-items: center;
+  width: 358px;
+  height: 199px;
+  text-align: center;
+  background-color: #000;
+  font-size: 24px;
+  border: 5px solid #FFCC00;
+}
+
+/* Slide */
+.slide-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  position: relative;
+}
+
+.slide-container .slide {
+  display: none;
+  width: 100%;
+}
+
+.slide-container .slide.fade {
+  animation: fade 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+.slide-container .slide img {
+  width: 100%;
+}
+
+.slide-container .prev,
+.slide-container .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: all 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.slide-container .prev:hover,
+.slide-container .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.slide-container .prev {
+  left: 2px;
+}
+
+.slide-container .next {
+  right: 2px;
+}
+/* End slide */
+
+/* Main container */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Seperator */
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    font-size: 24px;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+}
+
+.separator::before {
+    margin-right: 20px;
+}
+
+.separator::after {
+    margin-left: 20px;
+}
+
+/* Product section */
+.section-products {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+
+.product-card {
+  text-align: center;
+}
+
+.product-card img {
+  width: 283px;
+}
+
+.sale {
+  color: red;
+}
+
+/* Separator without text */
+.separator-line {
+  width: 90%;
+  border-bottom: 1px solid #000;
+}
+
+/* Section with campaign */
+.section-campaign {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin: 60px 0;
+}
+
+.section-campaign img {
+  width: 463px;
+  height: 589px;
+}
+
+.section-campaign-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  width: 456px;
+  height: 135px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.section-campaign-content h2 {
+  font-size: 24px;
+}
+
+.section-campaign-content p {
+  font-size: 19px;
+}
+
+.button-sale {
+  width: 196px;
+  height: 48px;
+  margin: 40px;
+  font-size: 18px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+}
+
+/* Blogg */
+.section-products-blogg {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 30px 0;
+}
+
+.blogg-card {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  width: 380px;
+  height: 508px;
+  margin-bottom: 20px;
+}
+
+.blogg-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.blogg-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin-bottom: 30px;
+  width: 301px;
+  height: 201px;
+  background-color: rgba(196, 196, 196, 0.7);
+  color: #333;
+}
+
+.blogg-card-content h2 {
+  font-size: 22px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.blogg-card-content p {
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  margin: 10px 38px;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 398px;
+  width: 100%;
+  background-color: #BBC0B6;
+  color: #333;
+}
+
+.customer-service-container li {
+  margin: 15px 0;
+}
+
+.customer-service-container img {
+  width: 34px;
+  margin-right: 10px;
+}
+
+.member-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 422px;
+  height: 263px;
+  background-color: #fff;
+  font-family: 'Raleway', sans-serif;
+}
+
+.member-container h3 {
+  font-size: 24px;
+}
+
+.member-container p {
+  margin: 10px 30px 0 30px;
+  font-size: 18px;
+}
+
+/* Mobile */
+@media ( max-width: 480px ) {
+
+  .main-menu {
+    display: none;
+  }
+
+  #mobile-menu-links {
+    display: none;
+    position: absolute;
+    width: 100%;
+    margin-top: 20px;
+    background-color: #fff;
+  }
+
+  #mobile-menu-links a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #333;
+    padding: 10px 0;
+  }
+
+  .main-menu-mobile {
+    display: block;
+    width: 87%;
+    padding: 25px 0;
+    border-bottom: 1px solid #000;
+  }
+
+  .hamburger-icon {
+    position: absolute;
+    top: 2%;
+    right: 6%;
+  }
+
+  .slide {
+    height: 465px;
+    margin: 40px 0 80px 0;
+  }
+
+  .hero-campaign {
+    width: 70%;
+  }
+
+  .hero-discount {
+    position: absolute;
+    top: 67%;
+    width: 264px;
+    height: 81px;
+    font-size: 18px;
+  }
+
+  .section-campaign {
+    flex-direction: column;
+    margin: 60px 0;
+  }
+
+  .section-campaign img {
+    width: 334px;
+    height: 191px;
+  }
+
+  .section-campaign-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 38%;
+    left: 16%;
+    width: 228px;
+    height: 96px;
+    text-align: center;
+    background-color: #fff;
+  }
+
+  footer {
+    flex-direction: column-reverse;
+    min-height: 398px;
+  }
+
+  .member-container {
+    width: 292px;
+    height: 182px;
+    margin: 30px 0 50px 0;
+  }
+
+  .member-container h3 {
+    font-size: 18px;
+    margin-top: 15px;
+  }
+
+  .member-container p {
+    margin: 15px 30px 0 30px;
+    font-size: 14px;
+  }
+}
