@@ -348,7 +348,7 @@ nav a, .customer-service-container a, #dropdown-menu a {
 }
 
 /* Footer */
-footer {
+.footer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -356,8 +356,6 @@ footer {
   flex-wrap: wrap;
   min-height: 398px;
   width: 100%;
-  background-color: #BBC0B6;
-  color: #333;
 }
 
 .customer-service-container li {

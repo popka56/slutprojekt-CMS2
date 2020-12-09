@@ -1,5 +1,5 @@
 
-    <footer>
+    <footer class="footer" style="background-color: <?php the_field('bakgrundsfarg', 'option');?>">
       <div class="customer-service-container">
         <h3>KUNDTJÄNST</h3>
         <ul>
