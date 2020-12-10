@@ -88,7 +88,8 @@ nav a, .customer-service-container a, #dropdown-menu a {
   text-align: center;
   width: 100%;
   background-color: rgba(196, 196, 196, 0.95);
-  top: 150px;
+  top: 160px;
+  z-index: 1;
 }
 
 #dropdown-menu li {
@@ -101,20 +102,6 @@ nav a, .customer-service-container a, #dropdown-menu a {
 }
 
 /* Hero */
-/* .slide {
-  height: 465px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin: 40px 0;
-  background-image: url('/assets/img/noah-buscher.jpg');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-} */
-
 .hero-campaign {
   width: 20%;
   text-align: center;
