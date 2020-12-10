@@ -10,21 +10,6 @@
     rel="stylesheet">
   <title><?php wp_title(); ?></title>
   <?php wp_head(); ?>
-  <style>
-    .slide {
-      height: 465px;
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-      margin: 40px 0;
-      background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/noah-buscher.jpg');
-      background-size: cover;
-      background-position: center;
-      color: #fff;
-    }
-  </style>
 </head>
 
 <body <?php body_class(); ?>>
@@ -84,21 +69,50 @@
       </a>
     </div>
 
+  <?php if( have_rows('campaign_slide' ) ): ?>
     <div class="slide-container">
-      <div class="slide fade">
-        <!-- <img src="<?php //echo get_template_directory_uri(); ?>/assets/img/noah-buscher.jpg" alt="Slideshow image"> -->
-        <div class="hero-campaign">
-          <h1>Säsongens kängor</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua.</p>
-          <a href=""><button class="button">Till kampanjen</button></a>
-        </div>
-        <div class="hero-discount">
-          <p>FÅ 20% RABATT MED KODEN WINTER2020</p>
-        </div>
+
+      <?php while( have_rows('campaign_slide') ): the_row(); 
+       $image = get_sub_field('image'); 
+      ?>
+
+      <div class="slide fade" style="
+          height: 465px;
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+          margin: 40px 0;
+          background-image: url('<?php echo $image ?>');
+          background-size: cover;
+          background-position: center;
+          color: #fff;
+          ">
+
+          <?php
+            $heading = get_sub_field('campaign_heading');
+            $content = get_sub_field('campaign_content');
+            $discount = get_sub_field('discount');
+
+            if( $heading && $content ) { ?>
+              <div class="hero-campaign">
+                <h1><?php echo $heading ?></h1>
+                <p><?php echo $content ?></p>
+                <a href=""><button class="button">Till kampanjen</button></a>
+              </div>
+            <?php } 
+            
+            if( $discount ) { ?>
+              <div class="hero-discount">
+                <p><?php echo $discount ?></p>
+              </div>
+            <?php } ?>
       </div>
+      <?php endwhile; ?>
 
       <a href="#" class="prev" title="Previous">&#10094</a>
       <a href="#" class="next" title="Next">&#10095</a>
     </div>
+    <?php endif; ?>
   </header>
