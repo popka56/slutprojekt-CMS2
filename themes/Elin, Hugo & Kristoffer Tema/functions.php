@@ -80,3 +80,32 @@ if (
 	));
 
 endif;
+
+// Funktion som hämtar ID för produkter som är på rea
+
+function get_products_on_sale_ID()
+{
+	$productsID = [];
+
+	$onsaleproducts =
+		WC_Product_Data_Store_CPT::get_on_sale_products();
+
+	foreach ($onsaleproducts as $product) {
+		array_push($productsID, $product->id);
+	}
+
+	return $productsID;
+}
+
+// Funktion som hämtar array med alla produkter som är på rea
+
+function get_array_for_products_on_sale()
+{
+	$products = [];
+	$productids = get_products_on_sale_ID();
+	foreach ($productids as $id) {
+		$product = wc_get_product($id);
+		array_push($products, $product);
+	}
+	return $products;
+}
