@@ -45,11 +45,11 @@ function your_shipping_method_init()
 
     function init()
     {
-      // Load the settings API
-      $this->init_form_fields(); // This is part of the settings API. Override the method to add your own settings
-      $this->init_settings(); // This is part of the settings API. Loads settings you previously init.
+      // Laddar settings för api
+      $this->init_form_fields();
+      $this->init_settings();
 
-      // Save settings in admin if you have any defined
+      // Spara settings i admin
       add_action('woocommerce_update_options_shipping_' . $this->id, array($this, 'process_admin_options'));
     }
 
@@ -131,8 +131,6 @@ function your_shipping_method_init()
       // $response = wp_remote_get('https://geocode.xyz/Rörbecksgatan,+14+Falkenberg?json=1');
       $body = wp_remote_retrieve_body($response);
       $formated_body_array = json_decode($body, true);
-      // var_dump($formated_body_array);
-      // echo 'longlat';
       return $formated_body_array;
     }
 
@@ -142,8 +140,6 @@ function your_shipping_method_init()
       $response = wp_remote_get('https://router.hereapi.com/v8/routes?transportMode=car&origin=' . $warehouse['latt'] . ',' . $warehouse['longt'] . '&destination=' . $destination['latt'] . ',' . $destination['longt'] . '&return=summary&apiKey=' . $this->key);
       $body = wp_remote_retrieve_body($response);
       $formated_body_array = json_decode($body, true);
-      // echo 'cal ';
-      // var_dump($formated_body_array);
       return $formated_body_array;
     }
 
@@ -198,14 +194,3 @@ function add_your_shipping_method($methods)
 }
 
 add_filter('woocommerce_shipping_methods', 'add_your_shipping_method');
-
-
-// function getcalcobj()
-// {
-//   $calculateDelivery = new WC_Your_Shipping_Method(getapiKey());
-//   return $calculateDelivery;
-// }
-
-
-
-// 'https://router.hereapi.com/v8/routes?transportMode=car&origin=56.90558,12.48476&destination=57.69898,11.97266&return=summary'
