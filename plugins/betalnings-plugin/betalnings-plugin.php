@@ -100,15 +100,24 @@ function init_ehk_payment_option() {
 
       }
 
-      //Här skulle kod som faktiskt genomförde beställningen var (men det ingår inte i uppgiften så vi skippar det)
-      public function process_payment( $order_id ) {
-   
+      //Genomför den faktiska beställningen
+      public function process_payment($order_id) {
+         //Hämta ordern
          global $woocommerce;
-         $order = wc_get_order( $order_id );
-      
-         //Prata med en API eller något för att skicka iväg en avi till rätt person med vårt personrn etc...
-      
-      }
+         $order = new WC_Order($order_id);
+     
+         //Sätt som on-hold, fakturan skickas manuellt till kunden
+         $order->update_status('on-hold', __( 'Awaiting cheque payment', 'woocommerce' ));
+     
+         //Töm kundvagnen
+         $woocommerce->cart->empty_cart();
+     
+         //Skicka till tack-sida
+         return array(
+             'result' => 'success',
+             'redirect' => $this->get_return_url( $order )
+         );
+     }
 
    }
 

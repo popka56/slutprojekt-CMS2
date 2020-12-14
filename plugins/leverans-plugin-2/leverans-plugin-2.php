@@ -8,3 +8,9 @@ Author: Elin, Hugo & Kristoffer
 Author URI: 
 License: GPL2
 */
+
+//Undviker tillgång till filen direkt från en URL
+if(!defined('ABSPATH')){
+    die;
+ }
+ 
