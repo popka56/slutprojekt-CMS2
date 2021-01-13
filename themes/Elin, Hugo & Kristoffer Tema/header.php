@@ -20,7 +20,7 @@
         <a href=""><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/icons8-search-50.png" alt="Search icon"></a>
         <a href=""><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/icons8-shopping-cart-50.png" alt="Shopping cart icon"></a>
       </div>
-      <h1>The Shoe</h1>
+      <h1><a href="<?php echo get_home_url(); ?>">The Shoe</a></h1>
       <nav>
         <ul>
           <a href="javascript:viod(0);" onclick="dropdownMenu()">
@@ -37,7 +37,7 @@
     </div>
     <div id="dropdown-menu">
       <ul>
-        <a href="">
+        <!-- <a href="">
           <li>Sneakers</li>
         </a>
         <a href="">
@@ -51,7 +51,13 @@
         </a>
         <a href="">
           <li>Tofflor</li>
-        </a>
+        </a> -->
+        <?php
+          wp_nav_menu( array(
+            'theme_location' => 'main-menu',
+            'menu_id' => 'main-menu',
+          ) );
+        ?>
       </ul>
     </div>
     <div class="main-menu-mobile">
