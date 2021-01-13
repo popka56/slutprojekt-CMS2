@@ -123,7 +123,7 @@ function your_shipping_method_init()
     }
 
     // Funktion för att byta adressen mot long/lat
-    function getLongLat($adress, $city)
+    public static function getLongLat($adress, $city)
     {
       // $adressarray = explode(' ', $adress);
       $newadress = str_replace(' ', '+', $adress);
@@ -135,7 +135,7 @@ function your_shipping_method_init()
     }
 
     // Funktion som räknar ut avståndet mellan lagret och destinationen
-    function calculateDistance($warehouse, $destination)
+    public static function calculateDistance($warehouse, $destination)
     {
       $response = wp_remote_get('https://router.hereapi.com/v8/routes?transportMode=car&origin=' . $warehouse['latt'] . ',' . $warehouse['longt'] . '&destination=' . $destination['latt'] . ',' . $destination['longt'] . '&return=summary&apiKey=' . $this->key);
       $body = wp_remote_retrieve_body($response);
