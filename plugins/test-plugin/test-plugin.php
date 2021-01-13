@@ -74,6 +74,16 @@ if(!defined('ABSPATH')){
        }
     }
 
+    //Funktion för att testa om latituden blir rätt
+    public static function is_correct_long_lat(){
+      WC_Your_Shipping_Method::getLongLat("address", "stad");
+    }
+
+    //Funktion för att testa att beräkning av distans blir korrekt
+    public static function is_correct_distance(){
+      WC_Your_Shipping_Method::calculateDistance("warehouse", "destination");
+    }
+
     //Lägg till era statiska testfunktioner här
     //...
  }
