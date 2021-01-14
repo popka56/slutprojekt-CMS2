@@ -68,9 +68,11 @@ class EHKTestPlugin
        
       if($output === $expectedOutput){
          echo '<p><span style="color: green;">Testet lyckades!</span> Personnummret "' . $ssn . '" förväntades returnera <span style="color: blue;">' . $expectedOutputS . '</span> och returnerade <span style="color: blue;">' . $outputS . '</span>.</p>';
+         return true;
       }
       else{
          echo '<p><span style="color: red;">Testet misslyckades!</span> Personnummret "' . $ssn . '" förväntades returnera <span style="color: blue;">' . $expectedOutputS . '</span> men returnerade <span style="color: blue;">' . $outputS . '</span>.</p>';
+         return false;
       }
    }
 
@@ -79,17 +81,28 @@ class EHKTestPlugin
       $output = WC_Your_Shipping_Method::getLongLat($streetAdress, $city);
       if($output["latt"] == $expectedLatt && $output["longt"] == $expectedLongt){
          echo '<p><span style="color: green;">Testet lyckades!</span> Lattituden och longituden förväntades bli <span style="color: blue;">' . $expectedLatt . '</span> respektive <span style="color: blue;">' . $expectedLongt .  '</span> och blev <span style="color: blue;">' . $output["latt"] . '</span> respektive <span style="color: blue;">' . $output["longt"] . '</span>.</p>';
+         return true;
       }
       else{
          echo '<p><span style="color: red;">Testet misslyckades!</span> Lattituden och longituden förväntades bli <span style="color: blue;">' . $expectedLatt . '</span> respektive <span style="color: blue;">' . $expectedLongt .  '</span> men blev <span style="color: blue;">' . $output["latt"] . '</span> respektive <span style="color: blue;">' . $output["longt"] . '</span>.</p>';
+         return false;
       }
    }
 
-   //Funktion för att...
+   //TEDJE TESTFUNKTIONEN HÄR SNART!
 
-
-   //Lägg till fler statiska testfunktioner här
-   //...
+   //Test av alla testfunktionerna
+   public static function are_the_test_functions_working_correctly(){
+      $function1 = self::is_actually_valid_ssn('640823-3234', true);
+      $function2 = self::is_correct_long_lat("Rörbecksgatan, 14", "Falkenberg", 56.90558, 12.48476);
+      //tredje funktionen här: $function3 = self::...
+      if(($function1 && $function2 /*&& $function3*/ === true)){
+         echo '<p><span style="color: green;">Alla test genomfördes korrekt!</span></p>';
+      }
+      else{
+         echo '<p><span style="color: green;">Något av testen misslyckades!</span></p>';
+      }
+   }
 }
  
 //Registrering-hooks

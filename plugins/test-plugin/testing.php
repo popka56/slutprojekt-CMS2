@@ -8,7 +8,7 @@
         <p>Test av personnr "640823-3233" (ogiltigt personnr.)</p>
         <?php EHKTestPlugin::is_actually_valid_ssn('640823-3233', false); ?>
 
-    <h2>Test av longituden och lattituden</h2>
+    <h2>Test av longitud och lattitud API</h2>
     <!--API:n ger error ibland för dessa, tror det är att vi ger requests för ofta när båda körs på en gång-->
 
         <p>Test av korrekta kordinater för Rörbecksgatan 14, Falkenberg</p>
@@ -19,10 +19,10 @@
 
     <h2>Testning av en annan funktion</h2>
 
-        <p>Test av ...</p>
-        <?php  ?>
+        <p>Test av funktion att hämta alla produkter på rea</p>
+        <?php //EHKTestPlugin::function_name(); ?>
 
-    <h2>Testning av en annan funktion</h2>
+    <h2>Testning av testfunktionerna</h2>
 
-        <p>Test av ...</p>
-        <?php  ?>
+        <p>???</p>
+        <?php EHKTestPlugin::are_the_test_functions_working_correctly(); ?>
