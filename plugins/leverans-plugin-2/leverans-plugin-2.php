@@ -20,7 +20,7 @@ function add_ehk_shipping_option($methods) {
 	$methods['ehk_shipping'] = 'EHK_Shipping'; //Klassnamnet
 	return $methods;
 }
-add_action('woocommerce_shipping_init', 'init_ehk_shipping_option');
+add_action('plugins_loaded', 'init_ehk_shipping_option');
 function init_ehk_shipping_option() {
  
    //Här bygger vi vår shipping baserat på woocommerces shipping method class

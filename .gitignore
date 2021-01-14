@@ -2,3 +2,4 @@ ai1wm-backups
 upgrade
 uploads
 plugins/shippingplugin/secret.php
+plugins/test-plugin/secret.php

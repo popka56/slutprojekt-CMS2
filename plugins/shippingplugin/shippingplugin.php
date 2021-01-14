@@ -113,7 +113,7 @@ function your_shipping_method_init()
         'latt' => 57.68005
       ];
 
-      $destination = $this->getLongLat($adress, $city);
+      $destination = WC_Your_Shipping_Method::getLongLat($adress, $city);
 
       $routeinfo = $this->calculateDistance($warehouseLocation, $destination);
       // Avstånd i meter
@@ -135,7 +135,7 @@ function your_shipping_method_init()
     }
 
     // Funktion som räknar ut avståndet mellan lagret och destinationen
-    public static function calculateDistance($warehouse, $destination)
+    public function calculateDistance($warehouse, $destination)
     {
       $response = wp_remote_get('https://router.hereapi.com/v8/routes?transportMode=car&origin=' . $warehouse['latt'] . ',' . $warehouse['longt'] . '&destination=' . $destination['latt'] . ',' . $destination['longt'] . '&return=summary&apiKey=' . $this->key);
       $body = wp_remote_retrieve_body($response);
@@ -185,7 +185,7 @@ function your_shipping_method_init()
   // end; func
 }
 
-add_action('woocommerce_shipping_init', 'your_shipping_method_init');
+add_action('plugins_loaded', 'your_shipping_method_init');
 
 function add_your_shipping_method($methods)
 {
