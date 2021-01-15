@@ -113,7 +113,7 @@ function your_shipping_method_init()
         'latt' => 57.68005
       ];
 
-      $destination = WC_Your_Shipping_Method::getLongLat($adress, $city);
+      $destination = $this->getLongLat($adress, $city);
 
       $routeinfo = $this->calculateDistance($warehouseLocation, $destination);
       // Avstånd i meter
