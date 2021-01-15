@@ -2,10 +2,19 @@
 
 add_theme_support('post-thumbnails');
 
+//Cache Buster!
+define ('VERSION', '1.0');
+function version_id() {
+  if ( WP_DEBUG )
+    return time();
+  return VERSION;
+}
+
 function slutprojekt_files()
 {
 	//wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/style.css', array(), rand(0,999999), 'all');
 	wp_enqueue_style( 'style.css', get_stylesheet_uri());
+	wp_enqueue_style( 'account.css', get_template_directory_uri() . '/assets/css/account.css', '', version_id());
 	wp_enqueue_script('theme-js', get_template_directory_uri() . '/index.js', array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'slutprojekt_files');

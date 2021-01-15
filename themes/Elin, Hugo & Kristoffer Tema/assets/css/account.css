@@ -1,0 +1,17 @@
+/*
+Theme Name: Elin, Hugo & Kristoffer Tema
+Author: Elin, Hugo & Kristoffer
+Description: ???
+Version: 1.0
+*/
+
+#account{
+  width: 90%;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; */
+  margin-top: 30px;
+  padding-bottom: 20px;
+  border-bottom: 0.5px solid #000;
+}

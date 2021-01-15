@@ -19,10 +19,10 @@
 
     <h2>Testning av en annan funktion</h2>
 
-        <p>Test av funktion att hämta alla produkter på rea</p>
-        <?php //EHKTestPlugin::function_name(); ?>
+        <p>Test av "cache buster" funktion</p>
+        <?php EHKTestPlugin::is_cache_busted("1.0"); ?>
 
     <h2>Testning av testfunktionerna</h2>
 
-        <p>???</p>
+        <p>Test av varje funktion med förväntat lyckat test</p>
         <?php EHKTestPlugin::are_the_test_functions_working_correctly(); ?>

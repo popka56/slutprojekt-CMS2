@@ -2,7 +2,7 @@
 /*
 Plugin Name: Slutprojekt - Test Plugin
 Plugin URI: 
-description: Testar olika funktioner från betalning- och leveransplugin skapade av EHK.
+description: Testar olika funktioner från temat och plugins skapade av EHK.
 Version: 1.0
 Author: Elin, Hugo & Kristoffer
 Author URI: 
@@ -79,6 +79,16 @@ class EHKTestPlugin
    //Funktion för att testa om latituden blir rätt
    public static function is_correct_long_lat(string $streetAdress, string $city, $expectedLatt, $expectedLongt){
       $output = WC_Your_Shipping_Method::getLongLat($streetAdress, $city);
+      
+      //Ifall API:n inte ger respons
+      if($output["latt"] == null){
+         $output["latt"] = "null";
+      }
+
+      if($output["longt"] == null){
+         $output["longt"] = "null";
+      }
+
       if($output["latt"] == $expectedLatt && $output["longt"] == $expectedLongt){
          echo '<p><span style="color: green;">Testet lyckades!</span> Lattituden och longituden förväntades bli <span style="color: blue;">' . $expectedLatt . '</span> respektive <span style="color: blue;">' . $expectedLongt .  '</span> och blev <span style="color: blue;">' . $output["latt"] . '</span> respektive <span style="color: blue;">' . $output["longt"] . '</span>.</p>';
          return true;
@@ -89,18 +99,29 @@ class EHKTestPlugin
       }
    }
 
-   //TEDJE TESTFUNKTIONEN HÄR SNART!
+   //Test av så kallad "cache buster" funktion
+   public static function is_cache_busted($expectedFailedOutput){
+      $output = version_id();
+      if($output === $expectedFailedOutput){
+         echo '<p><span style="color: red;">Testet misslyckades!</span> Utvalda filer fick versionsnummret <span style="color: blue;">' . $output . '</span>.</p>';
+         return false;
+      }
+      else{
+         echo '<p><span style="color: green;">Testet lyckades!</span> Utvalda filer fick versionsnummret <span style="color: blue;">' . $output . '</span>.</p>';
+         return true;
+      }
+   }
 
    //Test av alla testfunktionerna
    public static function are_the_test_functions_working_correctly(){
-      $function1 = self::is_actually_valid_ssn('640823-3234', true);
-      $function2 = self::is_correct_long_lat("Rörbecksgatan, 14", "Falkenberg", 56.90558, 12.48476);
-      //tredje funktionen här: $function3 = self::...
-      if(($function1 && $function2 /*&& $function3*/ === true)){
+      $function1 = self::is_actually_valid_ssn('640823-3234', true); //Ska lyckas
+      $function2 = self::is_correct_long_lat("Rörbecksgatan, 14", "Falkenberg", 56.90558, 12.48476); //Ska lyckas
+      $function3 = self::is_cache_busted("1.0"); //Ska lyckas
+      if(($function1 && $function2 && $function3 === true)){
          echo '<p><span style="color: green;">Alla test genomfördes korrekt!</span></p>';
       }
       else{
-         echo '<p><span style="color: green;">Något av testen misslyckades!</span></p>';
+         echo '<p><span style="color: red;">Något av testen misslyckades!</span></p>';
       }
    }
 }
