@@ -3,35 +3,35 @@
 add_theme_support('post-thumbnails');
 
 //Cache Buster!
-define ('VERSION', '1.0');
-function version_id() {
-  if ( WP_DEBUG )
-    return time();
-  return VERSION;
+define('VERSION', '1.0');
+function version_id()
+{
+	if (WP_DEBUG)
+		return time();
+	return VERSION;
 }
 
 function slutprojekt_files()
 {
 	//wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/style.css', array(), rand(0,999999), 'all');
-	wp_enqueue_style( 'style.css', get_stylesheet_uri());
-	wp_enqueue_style( 'account.css', get_template_directory_uri() . '/assets/css/account.css', '', version_id());
+	wp_enqueue_style('style.css', get_stylesheet_uri());
+	wp_enqueue_style('account.css', get_template_directory_uri() . '/assets/css/account.css', '', version_id());
 	wp_enqueue_script('theme-js', get_template_directory_uri() . '/index.js', array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'slutprojekt_files');
 
 // Menus
-function menus() 
+function menus()
 {
-	register_nav_menus( array(
-			'main-menu' 	=> 'Main Menu',
-			'footer-menu' => 'Footer Menu'
-	) );
+	register_nav_menus(array(
+		'main-menu' 	=> 'Main Menu',
+		'footer-menu' => 'Footer Menu'
+	));
 }
-add_action('init', 'menus' ); 
+add_action('init', 'menus');
 
 // Options Page
-if (function_exists('acf_add_options_page')) 
-{
+if (function_exists('acf_add_options_page')) {
 	acf_add_options_page(array(
 		'page_title' 	=> 'Footer',
 		'menu_title'	=> 'Footer Settings',
@@ -50,6 +50,7 @@ function createPostType()
 add_action('init', 'createPostType');
 
 // ACF för custom post type
+
 if (
 	function_exists('acf_add_local_field_group')
 ) :
@@ -76,6 +77,48 @@ if (
 				'prepend' => '',
 				'append' => '',
 				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_5ffee9b6ddfce',
+				'label' => 'Longitud',
+				'name' => 'longitud',
+				'type' => 'number',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'min' => '',
+				'max' => '',
+				'step' => '',
+			),
+			array(
+				'key' => 'field_5ffee9c6ddfcf',
+				'label' => 'Latitud',
+				'name' => 'latitud',
+				'type' => 'number',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'min' => '',
+				'max' => '',
+				'step' => '',
 			),
 		),
 		'location' => array(
@@ -124,4 +167,33 @@ function get_array_for_products_on_sale()
 		array_push($products, $product);
 	}
 	return $products;
+}
+
+// Skicka ajaxdata custom post type
+
+add_action('wp_ajax_butiker', 'send_longlat_butik');
+
+function send_longlat_butik()
+{
+
+	$butiskarray = [];
+	$ids = [];
+
+	$args = [
+		'post_type' => 'butiker',
+		'post_status' => 'publish'
+	];
+
+	$query = new WP_Query($args);
+	if ($query->have_posts()) {
+		while ($query->have_posts()) {
+			$query->the_post();
+			$post_id = get_the_ID();
+			$metadata = get_post_meta($post_id);
+			array_push($butiskarray, $metadata);
+		}
+	}
+
+	wp_send_json($butiskarray);
+	die();
 }

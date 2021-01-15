@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php require('secret.php');
+$apiKeyMap = getapiKeyMap();
+?>
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Catamaran:wght@300&family=Raleway:wght@300&family=Roboto:wght@300&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@300&family=Raleway:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <title><?php wp_title(); ?></title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $apiKeyMap ?>&callback=initMap">
+  </script>
   <?php wp_head(); ?>
+  <script>
+    let metadata;
+    let map;
+
+    fetch('http://localhost:8081/slutprojekt/wp-admin/admin-ajax.php?action=butiker')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        // console.log(data)
+        metadata = JSON.parse(JSON.stringify(data))
+
+        let map = new google.maps.Map(document.getElementById("map"), {
+          center: {
+            lat: 57.78145,
+            lng: 14.15618
+          },
+          zoom: 6,
+        });
+
+        for (i = 0; i < metadata.length; i++) {
+
+          let marker = new google.maps.Marker({
+            position: {
+              lat: parseFloat(metadata[i]['latitud'][0]),
+              lng: parseFloat(metadata[i]['longitud'][0])
+            },
+            map: map,
+          });
+        }
+      });
+  </script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -53,10 +89,10 @@
           <li>Tofflor</li>
         </a> -->
         <?php
-          wp_nav_menu( array(
-            'theme_location' => 'main-menu',
-            'menu_id' => 'main-menu',
-          ) );
+        wp_nav_menu(array(
+          'theme_location' => 'main-menu',
+          'menu_id' => 'main-menu',
+        ));
         ?>
       </ul>
     </div>
@@ -75,14 +111,14 @@
       </a>
     </div>
 
-  <?php if( have_rows('campaign_slide' ) ): ?>
-    <div class="slide-container">
+    <?php if (have_rows('campaign_slide')) : ?>
+      <div class="slide-container">
 
-      <?php while( have_rows('campaign_slide') ): the_row(); 
-       $image = get_sub_field('image'); 
-      ?>
+        <?php while (have_rows('campaign_slide')) : the_row();
+          $image = get_sub_field('image');
+        ?>
 
-      <div class="slide fade" style="
+          <div class="slide fade" style="
           height: 465px;
           width: 100%;
           display: flex;
@@ -96,29 +132,29 @@
           color: #fff;
           ">
 
-          <?php
+            <?php
             $heading = get_sub_field('campaign_heading');
             $content = get_sub_field('campaign_content');
             $discount = get_sub_field('discount');
 
-            if( $heading && $content ) { ?>
+            if ($heading && $content) { ?>
               <div class="hero-campaign">
                 <h1><?php echo $heading ?></h1>
                 <p><?php echo $content ?></p>
                 <a href=""><button class="button">Till kampanjen</button></a>
               </div>
-            <?php } 
-            
-            if( $discount ) { ?>
+            <?php }
+
+            if ($discount) { ?>
               <div class="hero-discount">
                 <p><?php echo $discount ?></p>
               </div>
             <?php } ?>
-      </div>
-      <?php endwhile; ?>
+          </div>
+        <?php endwhile; ?>
 
-      <a href="#" class="prev" title="Previous">&#10094</a>
-      <a href="#" class="next" title="Next">&#10095</a>
-    </div>
+        <a href="#" class="prev" title="Previous">&#10094</a>
+        <a href="#" class="next" title="Next">&#10095</a>
+      </div>
     <?php endif; ?>
   </header>
