@@ -4,7 +4,7 @@ Plugin Name: Slutprojekt - Betalnings Plugin
 Plugin URI: 
 description: Lägger till en ny betalningsmetod för woocommerce; Faktura via personnummer.
 Version: 1.0
-Author: Elin, Hugo & Kristoffer
+Author: Hugo Viklund
 Author URI: 
 License: GPL2
 */

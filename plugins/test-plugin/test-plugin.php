@@ -4,7 +4,7 @@ Plugin Name: Slutprojekt - Test Plugin
 Plugin URI: 
 description: Testar olika funktioner från temat och plugins skapade av EHK.
 Version: 1.0
-Author: Elin, Hugo & Kristoffer
+Author: Hugo Viklund
 Author URI: 
 License: GPL2
 */

@@ -4,7 +4,7 @@ Plugin Name: Slutprojekt - Leverans Plugin 2
 Plugin URI: 
 description: Lägger till val att hämta i valfri butik under checkout.
 Version: 1.0
-Author: Elin, Hugo & Kristoffer
+Author: Hugo Viklund
 Author URI: 
 License: GPL2
 */
