@@ -17,7 +17,9 @@ Ett plugin som lägger till betalning via faktura från giltigt personnummer. Ku
 När pluginet är aktiverat kan betalningsmetoden aktiveras för kunder genom att gå in i Woocommerces inställningar, under "Payments". Aktivera metoden "Faktura" och den bör dyka upp under kassan för kunderna. Du kan även ändra dess titel och beskrivning som syns i kassan genom att klicka på betalningsmetoden och ändra textfälten som då visas upp.
 
 ## shippingplugin
-...
+Ett leverans plugin som räknar ut priset för leveransen beroende på vikt av beställningen och hur långt avståndet är mellan lager och beställare, som räknas ut i bilväg via en API.
+
+När pluginet är aktiverat kommer det dyka upp en flik i wordpress admin som heter "Frakt priser" där man kan ställa in priser för dem olika viktklasserna.
 
 ## leverans-plugin-2
 Ännu ett plugin som lägger till en ny leverensmetod, denna gången för att hämta i butik. Kunder som väljer denna leveransmetod får välja mellan butikerna som skapats under temats "Butiker" flik.
