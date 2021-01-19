@@ -6,7 +6,19 @@ Destinationen bör se ut så här:
 "...din-wordpress-installation/wp-content"
 
 # Temat
-...
+För att temat ska fungera korrekt så behövs det skapas några ACF-fält. Fälten som behöver skapas är för footerns options page och för kampanj-slidern i headern. För footern behöver ett fält som heter ”Bakgrundsfärg” skapas och det ska vara av typen "Färgväljare". Detta fält ska placeras på inställningssidan (options page) "Footer Settings". Man kan sedan välja bakgrundsfärg för footern med hjälp av "Footer Settings" i adminpanelen. 
+
+För kampanj-slidern behöver ett upprepningsfält som heter "campaign slide" skapas och som placeras där sidmall är standardmall. Detta fält ska ha 4 underfält:
+* "image" av typen "Bild"
+* "campaign heading" av typen "Text"
+* "campagin content" av typen "Textfält"
+* "discount" av typen "Text"
+
+Man kan nu gå in på valfri sida och lägga till bilder och innehåll i slidern. 
+
+Tre menyer behöver också skapas. En huvudmeny, en meny för footern och en mobilmeny som man parar ihop med dessa tre menyer som finns listade under "Menyinställningar". Man väljer sedan vilka sidor/kategorier mm man vill ha med i dessa. 
+
+För att visa vart företagets butiker finns på en karta på webbplatsen går man in på "Butiker" i adminpanelen och fyller i företagets adress, samt longitud och latitud. 
 
 # Plugins
 Projektet kommer med fyra plugins: "betalnings-plugin", "shippingplugin", "leverans-plugin-2" och "test-plugin".
