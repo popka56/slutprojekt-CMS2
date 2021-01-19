@@ -25,7 +25,8 @@ function menus()
 {
 	register_nav_menus(array(
 		'main-menu' 	=> 'Main Menu',
-		'footer-menu' => 'Footer Menu'
+		'footer-menu' => 'Footer Menu',
+		'mobile-menu' => 'Mobile Menu'
 	));
 }
 add_action('init', 'menus');

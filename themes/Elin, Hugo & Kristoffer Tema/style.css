@@ -25,6 +25,7 @@ Version: 1.0
 .slide, 
 .section-campaign-content,
 .separator,
+.centered-content-section,
 footer,
 #dropdown-menu {
   font-family: 'Roboto', sans-serif;
@@ -76,7 +77,7 @@ nav li {
   display: inline-block;
   margin: 15px;
 }
-nav a, .customer-service-container a, #dropdown-menu a {
+nav a, .customer-service-container a, #dropdown-menu a, h1 a, .main-menu-icons-container a {
   text-decoration: none;
   color: #333;
 }
@@ -215,7 +216,7 @@ nav a, .customer-service-container a, #dropdown-menu a {
 .section-products {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   margin: 30px 0;
@@ -321,6 +322,7 @@ nav a, .customer-service-container a, #dropdown-menu a {
   height: 201px;
   background-color: rgba(196, 196, 196, 0.7);
   color: #333;
+  overflow: hidden;
 }
 
 .blogg-card-content h2 {
@@ -373,6 +375,28 @@ nav a, .customer-service-container a, #dropdown-menu a {
 .member-container p {
   margin: 10px 30px 0 30px;
   font-size: 18px;
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.centered-content-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: 30px 0;
+}
+
+.centered-content-section h2 {
+  text-align: center;
+  margin: 12px;
 }
 
 /* Mobile */

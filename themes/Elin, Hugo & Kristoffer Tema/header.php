@@ -54,12 +54,21 @@ $apiKeyMap = getapiKeyMap();
       <div class="main-menu-icons-container">
         <a href=""><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/icons8-customer-50.png" alt="Log in icon"></a>
         <a href=""><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/icons8-search-50.png" alt="Search icon"></a>
-        <a href=""><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/icons8-shopping-cart-50.png" alt="Shopping cart icon"></a>
+        <?php //get_search_form(); ?>
+
+          <?php 
+            $url= WC()->cart->get_cart_url();
+            $antal = WC()->cart->cart_contents_count;
+          ?>
+
+        <a href="<?php echo $url?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/icons8-shopping-cart-50.png" alt="Shopping cart icon">
+        <?= $antal ?>
+        </a>
       </div>
       <h1><a href="<?php echo get_home_url(); ?>">The Shoe</a></h1>
       <nav>
         <ul>
-          <a href="javascript:viod(0);" onclick="dropdownMenu()">
+          <!-- <a href="javascript:viod(0);" onclick="dropdownMenu()">
             <li>Dam</li>
           </a>
           <a href="javascript:viod(0);" onclick="dropdownMenu()">
@@ -67,13 +76,21 @@ $apiKeyMap = getapiKeyMap();
           </a>
           <a href="javascript:viod(0);" onclick="dropdownMenu()">
             <li>Barn</li>
-          </a>
+          </a> -->
+
+          <?php
+            wp_nav_menu( array(
+              'theme_location' => 'main-menu',
+              'menu_id' => 'main-menu',
+            ) );
+          ?>
+
         </ul>
       </nav>
     </div>
     <div id="dropdown-menu">
       <ul>
-        <!-- <a href="">
+        <a href="">
           <li>Sneakers</li>
         </a>
         <a href="">
@@ -87,24 +104,26 @@ $apiKeyMap = getapiKeyMap();
         </a>
         <a href="">
           <li>Tofflor</li>
-        </a> -->
-        <?php
-        wp_nav_menu(array(
-          'theme_location' => 'main-menu',
-          'menu_id' => 'main-menu',
-        ));
-        ?>
+        </a>
       </ul>
     </div>
     <div class="main-menu-mobile">
       <h1>The Shoe</h1>
       <div id="mobile-menu-links">
-        <a href="">Dam</a>
+        <!-- <a href="">Dam</a>
         <a href="">Herr</a>
         <a href="">Barn</a>
         <a href="">Logga in</a>
         <a href="">Varukorg</a>
-        <a href="">Sök</a>
+        <a href="">Sök</a> -->
+
+        <?php
+          wp_nav_menu( array(
+            'theme_location' => 'mobile-menu',
+            'menu_id' => 'mobile-menu',
+          ) );
+        ?>
+
       </div>
       <a href="javascript:viod(0);" onclick="mobileMenuShow()">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/icons8-menu-rounded-50.png" class="hamburger-icon" alt="Hamburger menu icon">
