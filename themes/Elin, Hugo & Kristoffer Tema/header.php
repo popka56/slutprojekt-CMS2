@@ -88,7 +88,7 @@ $apiKeyMap = getapiKeyMap();
         </ul>
       </nav>
     </div>
-    <div id="dropdown-menu">
+    <!-- <div id="dropdown-menu">
       <ul>
         <a href="">
           <li>Sneakers</li>
@@ -106,7 +106,7 @@ $apiKeyMap = getapiKeyMap();
           <li>Tofflor</li>
         </a>
       </ul>
-    </div>
+    </div> -->
     <div class="main-menu-mobile">
       <h1>The Shoe</h1>
       <div id="mobile-menu-links">
@@ -160,7 +160,7 @@ $apiKeyMap = getapiKeyMap();
               <div class="hero-campaign">
                 <h1><?php echo $heading ?></h1>
                 <p><?php echo $content ?></p>
-                <a href=""><button class="button">Till kampanjen</button></a>
+                <!-- <a href=""><button class="button">Till kampanjen</button></a> -->
               </div>
             <?php }
 

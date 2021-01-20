@@ -28,7 +28,7 @@
         $bestseller = new WC_Product(get_the_ID()); ?>
 
           <div class="product-card">
-            <a href="">
+            <a href="<?php the_permalink(); ?>">
             <img src="<?php the_post_thumbnail_url(); ?>" alt="Product">
             </a>
             <p><?php the_title(); ?></p>
@@ -42,15 +42,26 @@
 
     <div class="separator-line"></div>
 
+    <?php 
+      $image_left = get_field('kampanjbild_vanster');
+      $image_right = get_field('kampanjbild_hoger');
+    ?>
+
     <section class="section-campaign">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/img/siana-goodwin.jpg" alt="Campaign photo socks">
-      <a href="">
-        <div class="section-campaign-content">
-          <h2>Skönt för kalla fötter</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-      </a>
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/img/jakob-owens.jpg" alt="Campaign photo slippers">
+
+      <?php if( !empty( $image_left ) ): ?>
+        <img src="<?php echo esc_url($image_left['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+        <?php endif; ?>
+        <a href="">
+          <div class="section-campaign-content">
+            <h2><?php the_field('kampanjrubrik'); ?></h2>
+            <p><?php the_field('kampanjtext'); ?></p>
+          </div>
+        </a>
+          <?php if( !empty( $image_right ) ): ?>
+        <img src="<?php echo esc_url($image_right['url']); ?>" alt="<?php echo esc_attr($image_right['alt']); ?>">
+      <?php endif; ?>
+
     </section>
 
     <div class="separator">Rea</div>
@@ -92,7 +103,7 @@
         wp_reset_query(); ?>
     </section>
 
-    <a href=""><button class="button-sale">Se all rea</button></a>
+    <!-- <a href=""><button class="button-sale">Se all rea</button></a> -->
     <div class="separator">Blogginlägg</div>
 
 
@@ -110,7 +121,8 @@
                   <?php the_post_thumbnail('thumbnail', array('class' => 'blogg-image')); ?>
                   <div class="blogg-card-content">
                     <h2><?php the_title(); ?></h2>
-                    <p><?php the_excerpt(); ?></p>
+                    <?php the_date(); ?>
+                    <?php the_excerpt(); ?>
                   </div>
                 </div>
               </a>

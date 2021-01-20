@@ -83,7 +83,7 @@ nav a, .customer-service-container a, #dropdown-menu a, h1 a, .main-menu-icons-c
 }
 
 /* Dropdowmn menu */
-#dropdown-menu {
+/* #dropdown-menu {
   display: none;
   position: absolute;
   text-align: center;
@@ -95,7 +95,7 @@ nav a, .customer-service-container a, #dropdown-menu a, h1 a, .main-menu-icons-c
 
 #dropdown-menu li {
   margin: 30px;
-}
+} */
 
 /* Mobile menu */
 .main-menu-mobile {
@@ -188,6 +188,13 @@ nav a, .customer-service-container a, #dropdown-menu a, h1 a, .main-menu-icons-c
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 500px;
+  /* The width is the width of the web page */
 }
 
 /* Seperator */

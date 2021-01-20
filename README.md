@@ -6,7 +6,7 @@ Destinationen bör se ut så här:
 "...din-wordpress-installation/wp-content"
 
 # Temat
-För att temat ska fungera korrekt så behövs det skapas några ACF-fält. Fälten som behöver skapas är för footerns options page och för kampanj-slidern i headern. För footern behöver ett fält som heter ”Bakgrundsfärg” skapas och det ska vara av typen "Färgväljare". Detta fält ska placeras på inställningssidan (options page) "Footer Settings". Man kan sedan välja bakgrundsfärg för footern med hjälp av "Footer Settings" i adminpanelen. 
+För att temat ska fungera korrekt så behövs det skapas några ACF-fält. Fälten som behöver skapas är för footerns options page, för kampanj-slidern i headern samt för kampanjsektionen. För footern behöver ett fält som heter ”Bakgrundsfärg” skapas och det ska vara av typen "Färgväljare". Detta fält ska placeras på inställningssidan (options page) "Footer Settings". Man kan sedan välja bakgrundsfärg för footern med hjälp av "Footer Settings" i adminpanelen. 
 
 För kampanj-slidern behöver ett upprepningsfält som heter "campaign slide" skapas och som placeras där sidmall är standardmall. Detta fält ska ha 4 underfält:
 * "image" av typen "Bild"
@@ -14,7 +14,13 @@ För kampanj-slidern behöver ett upprepningsfält som heter "campaign slide" sk
 * "campagin content" av typen "Textfält"
 * "discount" av typen "Text"
 
-Man kan nu gå in på valfri sida och lägga till bilder och innehåll i slidern. 
+För kampanjsektionen behöver fyra fält skapas och som placeras där inläggstyp är sida:
+* "Kampanjbild vänster" av typen "Bild"
+* "Kampanjbild höger" av typen "Bild"
+* "Kampanjrubrik" av typen "Text"
+* "Kampanjtext" av typen "Textfält"
+
+Man kan nu gå in på valfri sida och lägga till bilder och innehåll i slidern och i kampanjsektionen. 
 
 Tre menyer behöver också skapas. En huvudmeny, en meny för footern och en mobilmeny som man parar ihop med dessa tre menyer som finns listade under "Menyinställningar". Man väljer sedan vilka sidor/kategorier mm man vill ha med i dessa. 
 
