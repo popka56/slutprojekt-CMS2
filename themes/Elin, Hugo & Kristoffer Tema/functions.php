@@ -14,7 +14,7 @@ function version_id()
 function slutprojekt_files()
 {
 	//wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/style.css', array(), rand(0,999999), 'all');
-	wp_enqueue_style('style.css', get_stylesheet_uri());
+	wp_enqueue_style('style.css', get_stylesheet_uri(), '', version_id());
 	wp_enqueue_style('account.css', get_template_directory_uri() . '/assets/css/account.css', '', version_id());
 	wp_enqueue_script('theme-js', get_template_directory_uri() . '/index.js', array(), null, true);
 }
@@ -198,3 +198,9 @@ function send_longlat_butik()
 	wp_send_json($butiskarray);
 	die();
 }
+
+// Kortar av the_excerpt så det inte blir lika många ord
+function custom_excerpt_length( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
